@@ -37,11 +37,12 @@ buck-out
 /ReactAndroid/src/main/gen
 
 # Android
+build/
 .idea
 .gradle
 local.properties
 *.iml
-/android/
+
 
 # Node
 node_modules

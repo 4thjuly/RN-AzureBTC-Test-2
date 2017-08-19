@@ -5,7 +5,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Initial Sample App!</Text>
+        <Text>Sample app with native module</Text>
       </View>
     );
   }
