@@ -7,6 +7,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
 import java.util.Map;
+import android.widget.Toast;
 
 public class AppAuthModule extends ReactContextBaseJavaModule {
 
@@ -21,6 +22,8 @@ public class AppAuthModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void configureService() {
+        Toast.makeText(getReactApplicationContext(), "Testing Native Method", Toast.LENGTH_LONG).show();
+
 //        AuthorizationServiceConfiguration serviceConfiguration = new AuthorizationServiceConfiguration(
 //                Uri.parse("https://accounts.google.com/o/oauth2/v2/auth") /* auth endpoint */,
 //                Uri.parse("https://www.googleapis.com/oauth2/v4/token") /* token endpoint */
