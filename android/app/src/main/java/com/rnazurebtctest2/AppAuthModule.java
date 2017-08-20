@@ -6,7 +6,7 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
-//import net.openid.appauth.*;
+// import net.openid.appauth.*;
 import java.util.Map;
 
 import android.net.Uri;
