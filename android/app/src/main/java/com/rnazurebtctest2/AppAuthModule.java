@@ -6,7 +6,7 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
-// import net.openid.appauth.*;
+import net.openid.appauth.*;
 import java.util.Map;
 
 import android.net.Uri;
@@ -31,7 +31,7 @@ public class AppAuthModule extends ReactContextBaseJavaModule {
         Uri redirectUri = Uri.parse("com.onmicrosoft.ianetb2ctenant.rnazureb2ctest2://oauth/redirect");
 
         Toast.makeText(getReactApplicationContext(), "Testing Native Method", Toast.LENGTH_LONG).show();
-//        AuthorizationServiceConfiguration config = new AuthorizationServiceConfiguration(Uri.parse(mAuthEndpoint), Uri.parse(mTokenEndpoint), null);
-//        AuthorizationRequest req = new AuthorizationRequest.Builder(config, clientId, ResponseTypeValues.CODE, redirectUri).build();
+        AuthorizationServiceConfiguration config = new AuthorizationServiceConfiguration(Uri.parse(mAuthEndpoint), Uri.parse(mTokenEndpoint));
+        AuthorizationRequest req = new AuthorizationRequest.Builder(config, clientId, "code", redirectUri).build();
     }
 }
