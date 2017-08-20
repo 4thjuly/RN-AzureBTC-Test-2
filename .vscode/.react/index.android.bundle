@@ -52518,7 +52518,7 @@ var App = function (_React$Component) {
               lineNumber: 10
             }
           },
-          'Sample app with native module'
+          'Sample app with native module - v0.01'
         )
       );
     }

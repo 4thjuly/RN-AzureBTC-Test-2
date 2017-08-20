@@ -7,7 +7,7 @@ export default class App extends React.Component {
     AppAuthAndroid.configureService();
     return (
       <View style={styles.container}>
-        <Text>Sample app with native module</Text>
+        <Text>Sample app with native module - v0.01</Text>
       </View>
     );
   }
