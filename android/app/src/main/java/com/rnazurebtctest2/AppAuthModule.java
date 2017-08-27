@@ -9,6 +9,7 @@ import com.facebook.react.bridge.ReactMethod;
 import net.openid.appauth.*;
 import java.util.Map;
 
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.net.Uri;
@@ -32,13 +33,16 @@ public class AppAuthModule extends ReactContextBaseJavaModule {
         String clientId = "62386987-856b-4e6e-89db-59eef6d603b6";
         Uri redirectUri = Uri.parse("com.onmicrosoft.ianetb2ctenant.rnazureb2ctest2://oauth/redirect");
         ReactContext context = getReactApplicationContext();
+        Activity activity = getCurrentActivity();
 
         Toast.makeText(context, "Testing Native Method", Toast.LENGTH_LONG).show();
-//        AuthorizationServiceConfiguration config = new AuthorizationServiceConfiguration(Uri.parse(authEndpoint), Uri.parse(tokenEndpoint));
-//        AuthorizationRequest req = new AuthorizationRequest.Builder(config, clientId, "code", redirectUri).build();
-//
-//            AuthorizationService authService = new AuthorizationService(context);
+        AuthorizationServiceConfiguration config = new AuthorizationServiceConfiguration(Uri.parse(authEndpoint), Uri.parse(tokenEndpoint));
+        AuthorizationRequest req = new AuthorizationRequest.Builder(config, clientId, "code", redirectUri).build();
+        AuthorizationService authService = new AuthorizationService(context);
 
-//        authService.performAuthorizationRequest(req, PendingIntent.getActivity(context, 0, new Intent(context, AuthCompleteActivity.class), 0));
+        Intent completeIntent = new Intent(context, AuthCompleteActivity.class);
+        completeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        authService.performAuthorizationRequest(req, PendingIntent.getActivity(context, 0, completeIntent, 0));
     }
 }
