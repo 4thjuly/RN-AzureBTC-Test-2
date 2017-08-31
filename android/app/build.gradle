@@ -19,7 +19,7 @@ android {
         versionCode 1
         versionName "1.0"
         ndk { abiFilters "armeabi-v7a", "x86" }
-        manifestPlaceholders = ['appAuthRedirectScheme': 'com.onmicrosoft.ianetb2ctenant.rnazurebtctest2']
+        manifestPlaceholders = ['appAuthRedirectScheme': 'com.onmicrosoft.ianetb2ctenant.rnazureb2ctest2']
     }
     splits {
         abi {
