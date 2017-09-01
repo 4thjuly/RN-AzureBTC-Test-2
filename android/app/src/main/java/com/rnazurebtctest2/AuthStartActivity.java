@@ -35,8 +35,19 @@ public class AuthStartActivity extends AppCompatActivity {
 
         try {
             MobileServiceClient client = new MobileServiceClient("https://api-app-test-1.azurewebsites.net", activity);
-            ListenableFuture<JsonElement> test = client.invokeApi("Test", "GET", Collections.EMPTY_LIST);
-            Toast.makeText(this, "Invoked Test", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Invoking Test", Toast.LENGTH_SHORT).show();
+            ListenableFuture<JsonElement> result = client.invokeApi("Test", "GET", Collections.EMPTY_LIST);
+            Futures.addCallback(result, new FutureCallback<JsonElement>() {
+                @Override
+                public void onFailure(Throwable exc) {
+                    Toast.makeText(activity, "Test Failure", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onSuccess(JsonElement result) {
+                    Toast.makeText(activity, "Test Success: " + result.toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
