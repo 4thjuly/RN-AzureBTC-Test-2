@@ -63,6 +63,7 @@ public class AuthStartActivity extends AppCompatActivity {
         AuthorizationService authService = new AuthorizationService(this);
         MainApplication app = (MainApplication) getApplication();
         app.authService = authService;
+        app.authConfig = config;
 
         Intent completeIntent = new Intent(this, AuthCompleteActivity.class);
         authService.performAuthorizationRequest(req, PendingIntent.getActivity(this, 0, completeIntent, 0));
