@@ -63,3 +63,11 @@ public class AuthCompleteActivity extends AppCompatActivity {
 
 
 }
+
+//        try {
+//            MobileServiceClient client = new MobileServiceClient("https://api-app-test-1.azurewebsites.net", activity);
+//            ListenableFuture<JsonElement> test = client.invokeApi("Test", "GET", Collections.EMPTY_LIST);
+//            Toast.makeText(this, "Invoked Test", Toast.LENGTH_LONG).show();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
