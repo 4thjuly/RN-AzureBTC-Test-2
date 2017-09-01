@@ -33,13 +33,13 @@ public class AuthStartActivity extends AppCompatActivity {
         Toast.makeText(this, "Testing Native Method (0)", Toast.LENGTH_LONG).show();
         final Activity activity = this;
 
-//        try {
-//            MobileServiceClient client = new MobileServiceClient("https://api-app-test-1.azurewebsites.net", activity);
-//            ListenableFuture<JsonElement> test = client.invokeApi("Test", "GET", Collections.EMPTY_LIST);
-//            Toast.makeText(this, "Invoked Test", Toast.LENGTH_LONG).show();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        try {
+            MobileServiceClient client = new MobileServiceClient("https://api-app-test-1.azurewebsites.net", activity);
+            ListenableFuture<JsonElement> test = client.invokeApi("Test", "GET", Collections.EMPTY_LIST);
+            Toast.makeText(this, "Invoked Test", Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
 
