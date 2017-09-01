@@ -8,14 +8,14 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
-//import net.openid.appauth.AuthorizationService;
+import net.openid.appauth.AuthorizationService;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
-//  AuthorizationService authService;
+  AuthorizationService authService;
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
@@ -36,8 +36,8 @@ public class MainApplication extends Application implements ReactApplication {
     return mReactNativeHost;
   }
 
-//  public AuthorizationService getAuthService() { return authService; };
-//  public void setAuthService(AuthorizationService authService) { this.authService = authService; };
+  public AuthorizationService getAuthService() { return authService; };
+  public void setAuthService(AuthorizationService authService) { this.authService = authService; };
 
   @Override
   public void onCreate() {
