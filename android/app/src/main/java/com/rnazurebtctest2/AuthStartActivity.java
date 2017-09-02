@@ -55,7 +55,7 @@ public class AuthStartActivity extends AppCompatActivity {
         String authEndpoint = "https://login.microsoftonline.com/IanETB2CTenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_SUSI";
         String tokenEndpoint = "https://login.microsoftonline.com/IanETB2CTenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_SUSI";
         String clientId = "62386987-856b-4e6e-89db-59eef6d603b6";
-        String scope = "openid profile";
+        String scope = "openid profile offline_access 62386987-856b-4e6e-89db-59eef6d603b6";
         Uri redirectUri = Uri.parse("com.onmicrosoft.ianetb2ctenant.rnazureb2ctest2://oauth/redirect");
 
         AuthorizationServiceConfiguration config = new AuthorizationServiceConfiguration(Uri.parse(authEndpoint), Uri.parse(tokenEndpoint));

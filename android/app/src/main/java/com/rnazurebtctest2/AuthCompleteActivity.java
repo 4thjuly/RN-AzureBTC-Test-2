@@ -51,7 +51,7 @@ public class AuthCompleteActivity extends AppCompatActivity {
                                     Toast.makeText(activity, "Token refresh succeeded", Toast.LENGTH_SHORT).show();
                                     try {
                                         MobileServiceClient client = new MobileServiceClient("https://api-app-test-1.azurewebsites.net", activity);
-                                        MobileServiceUser user = new MobileServiceUser(idToken);
+                                        MobileServiceUser user = new MobileServiceUser(null);
                                         user.setAuthenticationToken(accessToken);
                                         client.setCurrentUser(user);
                                         Toast.makeText(activity, "Invoking Test", Toast.LENGTH_SHORT).show();
