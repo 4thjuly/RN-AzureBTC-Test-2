@@ -40,6 +40,7 @@ public class AuthCompleteActivity extends AppCompatActivity {
                         if (resp != null) {
                             authState.update(resp, ex);
                             Toast.makeText(activity, "Token request succeeded", Toast.LENGTH_SHORT).show();
+                            authState.createTokenRefreshRequest();
                             authState.performActionWithFreshTokens(authService, new AuthState.AuthStateAction() {
                                 @Override public void execute(String accessToken, String idToken, AuthorizationException ex) {
                                     if (ex != null) {
