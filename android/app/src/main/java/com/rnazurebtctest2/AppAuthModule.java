@@ -5,6 +5,9 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.ComponentName;
 import android.content.Intent;
 
 public class AppAuthModule extends ReactContextBaseJavaModule {
@@ -21,6 +24,7 @@ public class AppAuthModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void configureService() {
         ReactContext context = getReactApplicationContext();
+        //Activity currentActivity = getCurrentActivity();
         Intent authStartIntent = new Intent(context, AuthStartActivity.class);
         authStartIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(authStartIntent);

@@ -65,6 +65,7 @@ public class AuthCompleteActivity extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(JsonElement result) {
                                                 Toast.makeText(activity, "Test Success: " + result.toString(), Toast.LENGTH_SHORT).show();
+                                                finish();
                                             }
                                         });
                                     } catch (Exception e) {
