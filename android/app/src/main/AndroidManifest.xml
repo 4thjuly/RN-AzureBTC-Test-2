@@ -48,7 +48,6 @@
         <!-- </intent-filter> -->
         <!-- </activity> -->
         <activity android:name=".AuthCompleteActivity" />
-        <activity android:name=".AuthCanceledActivity" />
         <activity android:name=".AuthStartActivity"></activity>
     </application>
 
