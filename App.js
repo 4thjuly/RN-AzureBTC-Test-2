@@ -1,13 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import AppAuthAndroid from './AppAuthAndroid';
 
 export default class App extends React.Component {
   render() {
-    AppAuthAndroid.configureService();
     return (
       <View style={styles.container}>
-        <Text>Sample app with native module - v0.01</Text>
+        <Text>Sample app with native module - v0.03</Text>
+        <Button title=" Logon " onPress={ () => { AppAuthAndroid.configureService() }} /> 
       </View>
     );
   }
