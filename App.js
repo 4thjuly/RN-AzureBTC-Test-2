@@ -7,7 +7,8 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Sample app with native module - v0.03</Text>
-        <Button title=" Logon " onPress={ () => { AppAuthAndroid.configureService() }} /> 
+        <Button title=" Logon " onPress={ () => { AppAuthAndroid.login() }} /> 
+        <Button title=" Logoff " onPress={ () => { AppAuthAndroid.logout() }} /> 
       </View>
     );
   }
