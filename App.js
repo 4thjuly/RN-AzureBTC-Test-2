@@ -1,14 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import AppAuthAndroid from './AppAuthAndroid';
+import QRCode from 'react-native-qrcode';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Sample app with native module - v0.03</Text>
-        <Button title=" Logon " onPress={ () => { AppAuthAndroid.login() }} /> 
-        <Button title=" Logoff " onPress={ () => { AppAuthAndroid.logout() }} /> 
+        <Text style={{margin:5}}>Sample app with native module - v0.03</Text>
+        <View style={{flexDirection:'row', margin:5}}>
+        <Button style={{margin:5}} title=" Logon " onPress={ () => { AppAuthAndroid.login() }} /> 
+        <Button style={{margin:5}} title=" Logoff " onPress={ () => { AppAuthAndroid.logout() }} /> 
+        </View>
+        <QRCode value='This is a test' size={200} bgColor='black' fgColor='white'/>
       </View>
     );
   }
