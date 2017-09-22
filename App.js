@@ -5,13 +5,13 @@ import QRCode from 'react-native-qrcode';
 import { StackNavigator } from 'react-navigation';
 import MainScreen from './MainScreen';
 
-class HomeScreen extends React.Component {
-  static navigationOptions = { title: 'Welcome' };
-  render() {
-    return <Text>Hello, Navigation!</Text>;
-  }
-}
+// class HomeScreen extends React.Component {
+//   static navigationOptions = { title: 'Welcome' };
+//   render() {
+//     return <Text>Hello, Navigation!</Text>;
+//   }
+// }
 
 export default SimpleApp = StackNavigator({
-  Home: { screen: HomeScreen }
+  Main: { screen: MainScreen }
 });
