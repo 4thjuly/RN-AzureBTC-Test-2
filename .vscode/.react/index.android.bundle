@@ -52495,9 +52495,14 @@ var _ScanScreen = require(384           ); // 384 = ./ScanScreen
 
 var _ScanScreen2 = babelHelpers.interopRequireDefault(_ScanScreen);
 
+var _QRScreen = require(387         ); // 387 = ./QRScreen
+
+var _QRScreen2 = babelHelpers.interopRequireDefault(_QRScreen);
+
 exports.default = SimpleApp = (0, _reactNavigation.StackNavigator)({
   Main: { screen: _MainScreen2.default },
-  Scan: { screen: _ScanScreen2.default }
+  Scan: { screen: _ScanScreen2.default },
+  QR: { screen: _QRScreen2.default }
 });
 }, 309, null, "RN-AzureBTC-Test-2/App.js");
 __d(/* react-navigation/src/react-navigation.js */function(global, require, module, exports) {
@@ -59480,19 +59485,21 @@ var MainScreen = (_temp = _class = function (_React$Component) {
               lineNumber: 16
             }
           }),
-          _react2.default.createElement(_reactNative.Button, { style: { margin: 5 }, title: ' Scan ', onPress: function onPress() {
-              navigate('Scan');
+          _react2.default.createElement(_reactNative.Button, { style: { margin: 5 }, title: ' QR ', onPress: function onPress() {
+              navigate('QR');
             }, __source: {
               fileName: _jsxFileName,
               lineNumber: 17
             }
+          }),
+          _react2.default.createElement(_reactNative.Button, { style: { margin: 5 }, title: ' Scan ', onPress: function onPress() {
+              navigate('Scan');
+            }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 18
+            }
           })
-        ),
-        _react2.default.createElement(_reactNativeQrcode2.default, { value: 'This is a test', size: 200, bgColor: 'darkblue', fgColor: 'lightblue', __source: {
-            fileName: _jsxFileName,
-            lineNumber: 19
-          }
-        })
+        )
       );
     }
   }]);
@@ -61215,6 +61222,81 @@ var styles = _reactNative.StyleSheet.create({
   base: {}
 });
 }, 386, null, "react-native-camera/index.js");
+__d(/* RN-AzureBTC-Test-2/QRScreen.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _class,
+    _temp,
+    _jsxFileName = 'C:\\Users\\Ian\\Documents\\GitHub\\RN-AzureBTC-Test-2\\QRScreen.js';
+
+var _react = require(116    ); // 116 = react
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require(12            ); // 12 = react-native
+
+var _AppAuthAndroid = require(370               ); // 370 = ./AppAuthAndroid
+
+var _AppAuthAndroid2 = babelHelpers.interopRequireDefault(_AppAuthAndroid);
+
+var _reactNativeQrcode = require(371                  ); // 371 = react-native-qrcode
+
+var _reactNativeQrcode2 = babelHelpers.interopRequireDefault(_reactNativeQrcode);
+
+var MainScreen = (_temp = _class = function (_React$Component) {
+  babelHelpers.inherits(MainScreen, _React$Component);
+
+  function MainScreen() {
+    babelHelpers.classCallCheck(this, MainScreen);
+    return babelHelpers.possibleConstructorReturn(this, (MainScreen.__proto__ || Object.getPrototypeOf(MainScreen)).apply(this, arguments));
+  }
+
+  babelHelpers.createClass(MainScreen, [{
+    key: 'render',
+    value: function render() {
+      var text = 'This is a test';
+      return _react2.default.createElement(
+        _reactNative.View,
+        { style: styles.container, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 12
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.Text,
+          { style: { margin: 5 }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 13
+            }
+          },
+          ' ',
+          text,
+          ' '
+        ),
+        _react2.default.createElement(_reactNativeQrcode2.default, { value: text, size: 200, bgColor: 'darkblue', fgColor: 'lightblue', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 14
+          }
+        })
+      );
+    }
+  }]);
+  return MainScreen;
+}(_react2.default.Component), _class.navigationOptions = { title: 'QR' }, _temp);
+exports.default = MainScreen;
+
+
+var styles = _reactNative.StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+});
+}, 387, null, "RN-AzureBTC-Test-2/QRScreen.js");
 ;require(61);
 ;require(0);
 //# sourceMappingURL=index.android.map

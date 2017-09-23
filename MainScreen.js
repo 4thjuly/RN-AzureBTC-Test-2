@@ -14,9 +14,10 @@ export default class MainScreen extends React.Component {
         <View style={{flexDirection:'row', margin:5}}>
           <Button style={{margin:5}} title=" Logon " onPress={ () => { AppAuthAndroid.login() }} /> 
           <Button style={{margin:5}} title=" Logoff " onPress={ () => { AppAuthAndroid.logout() }} />
+          <Button style={{margin:5}} title=" QR " onPress={ () => { navigate('QR')}} />
           <Button style={{margin:5}} title=" Scan " onPress={ () => { navigate('Scan')}} />
         </View>
-        <QRCode value='This is a test' size={200} bgColor='darkblue' fgColor='lightblue'/>
+        {/* <QRCode value='This is a test' size={200} bgColor='darkblue' fgColor='lightblue'/> */}
       </View>
     );
   }
