@@ -52499,10 +52499,15 @@ var _QRScreen = require(387         ); // 387 = ./QRScreen
 
 var _QRScreen2 = babelHelpers.interopRequireDefault(_QRScreen);
 
+var _ScanResultScreen = require(388                 ); // 388 = ./ScanResultScreen
+
+var _ScanResultScreen2 = babelHelpers.interopRequireDefault(_ScanResultScreen);
+
 exports.default = SimpleApp = (0, _reactNavigation.StackNavigator)({
   Main: { screen: _MainScreen2.default },
   Scan: { screen: _ScanScreen2.default },
-  QR: { screen: _QRScreen2.default }
+  QR: { screen: _QRScreen2.default },
+  ScanResult: { screen: _ScanResultScreen2.default }
 });
 }, 309, null, "RN-AzureBTC-Test-2/App.js");
 __d(/* react-navigation/src/react-navigation.js */function(global, require, module, exports) {
@@ -60622,10 +60627,10 @@ var ScanScreen = (_temp = _class = function (_React$Component) {
   babelHelpers.createClass(ScanScreen, [{
     key: 'onRead',
     value: function onRead(event) {
-      var goBack = this.props.navigation.goBack;
+      var navigate = this.props.navigation.navigate;
 
       console.log('OnRead: ', event.data);
-      goBack();
+      navigate('ScanResult', { text: event.data });
     }
   }, {
     key: 'render',
@@ -61297,6 +61302,76 @@ var styles = _reactNative.StyleSheet.create({
   }
 });
 }, 387, null, "RN-AzureBTC-Test-2/QRScreen.js");
+__d(/* RN-AzureBTC-Test-2/ScanResultScreen.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _class,
+    _temp,
+    _jsxFileName = 'C:\\Users\\Ian\\Documents\\GitHub\\RN-AzureBTC-Test-2\\ScanResultScreen.js';
+
+var _react = require(116    ); // 116 = react
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require(12            ); // 12 = react-native
+
+var _AppAuthAndroid = require(370               ); // 370 = ./AppAuthAndroid
+
+var _AppAuthAndroid2 = babelHelpers.interopRequireDefault(_AppAuthAndroid);
+
+var _reactNativeQrcode = require(371                  ); // 371 = react-native-qrcode
+
+var _reactNativeQrcode2 = babelHelpers.interopRequireDefault(_reactNativeQrcode);
+
+var ScanResultScreen = (_temp = _class = function (_React$Component) {
+  babelHelpers.inherits(ScanResultScreen, _React$Component);
+
+  function ScanResultScreen() {
+    babelHelpers.classCallCheck(this, ScanResultScreen);
+    return babelHelpers.possibleConstructorReturn(this, (ScanResultScreen.__proto__ || Object.getPrototypeOf(ScanResultScreen)).apply(this, arguments));
+  }
+
+  babelHelpers.createClass(ScanResultScreen, [{
+    key: 'render',
+    value: function render() {
+      var text = this.props.navigation.state.params.text;
+      return _react2.default.createElement(
+        _reactNative.View,
+        { style: styles.container, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 12
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.Text,
+          { style: { margin: 5 }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 13
+            }
+          },
+          ' ',
+          text,
+          ' '
+        )
+      );
+    }
+  }]);
+  return ScanResultScreen;
+}(_react2.default.Component), _class.navigationOptions = { title: 'Scan Result' }, _temp);
+exports.default = ScanResultScreen;
+
+
+var styles = _reactNative.StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+});
+}, 388, null, "RN-AzureBTC-Test-2/ScanResultScreen.js");
 ;require(61);
 ;require(0);
 //# sourceMappingURL=index.android.map

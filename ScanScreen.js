@@ -6,9 +6,9 @@ export default class ScanScreen extends React.Component {
   static navigationOptions = { title: 'Scan' };
   
   onRead(event) {
-    const { goBack } = this.props.navigation;       
+    const { navigate } = this.props.navigation;       
     console.log('OnRead: ', event.data);
-    goBack();
+    navigate('ScanResult', {text: event.data});
   }
 
   render() {
