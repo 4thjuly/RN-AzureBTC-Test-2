@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Platform } from 'react-native';
 import AppAuthAndroid from './AppAuthAndroid';
+import AppAuthIos from './AppAuthIos';
 import QRCode from 'react-native-qrcode';
 
 export default class MainScreen extends React.Component {
@@ -12,8 +13,8 @@ export default class MainScreen extends React.Component {
       <View style={styles.container}>
         <Text style={{margin:5}}>Sample app with native module - v0.04</Text>
         <View style={{flexDirection:'row', margin:5}}>
-          <Button style={{margin:5}} title=" Logon " onPress={ () => { AppAuthAndroid.login() }} /> 
-          <Button style={{margin:5}} title=" Logoff " onPress={ () => { AppAuthAndroid.logout() }} />
+          <Button style={{margin:5}} title=" Logon " onPress={ () => { this.login() }} /> 
+          <Button style={{margin:5}} title=" Logoff " onPress={ () => { this.logout() }} />
           <Button style={{margin:5}} title=" QR " onPress={ () => { navigate('QR')}} />
           <Button style={{margin:5}} title=" Scan " onPress={ () => { navigate('Scan')}} />
         </View>
@@ -21,6 +22,24 @@ export default class MainScreen extends React.Component {
       </View>
     );
   }
+
+  login() {
+    if (Platform.OS === 'ios') {
+      AppAuthIos.test('This is a test');
+    } else {
+      AppAuthAndroid.login();
+    }
+
+  }
+
+  logout() {
+    if (Platform.OS === 'ios') {
+      AppAuthIos.test('This is a test');
+    } else {
+      AppAuthAndroid.logout();
+    }
+  }
+
 }
 
 const styles = StyleSheet.create({
