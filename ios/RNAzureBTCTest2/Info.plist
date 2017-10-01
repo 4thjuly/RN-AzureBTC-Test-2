@@ -52,5 +52,9 @@
 			</dict>
 		</dict>
 	</dict>
+  <key>NSCameraUsageDescription</key>
+  <string> For QRCode scanning</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>Fsor QRCode scanning</string>
 </dict>
 </plist>
