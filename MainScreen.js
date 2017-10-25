@@ -11,7 +11,7 @@ export default class MainScreen extends React.Component {
     const { navigate } = this.props.navigation;    
     return (
       <View style={styles.container}>
-        <Text style={{margin:5}}>Sample app with native module - v0.04</Text>
+        <Text style={{margin:5}}>Sample app with native module - v0.05</Text>
         <View style={{flexDirection:'row', margin:5}}>
           <Button style={{margin:5}} title=" Logon " onPress={ () => { this.login() }} /> 
           <Button style={{margin:5}} title=" Logoff " onPress={ () => { this.logout() }} />
