@@ -25,7 +25,8 @@ export default class MainScreen extends React.Component {
 
   login() {
     if (Platform.OS === 'ios') {
-      AppAuthIos.test('This is a test');
+      // AppAuthIos.test('This is a test');
+      AppAuthIos.login();
     } else {
       AppAuthAndroid.login();
     }
