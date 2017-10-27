@@ -20,8 +20,8 @@
   }
 
   RCT_EXPORT_METHOD(login) {
-    NSURL *authorizationEndpoint = [NSURL URLWithString:@"https://login.microsoftonline.com/IanETB2CTenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_SUSI"];
-    NSURL *tokenEndpoint = [NSURL URLWithString:@"https://login.microsoftonline.com/IanETB2CTenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_SUSI"];
+    NSURL *authorizationEndpoint = [NSURL URLWithString:@"https://login.microsoftonline.com/te/IanETB2CTenant.onmicrosoft.com/b2c_1_susi/oauth2/v2.0/authorize"];
+    NSURL *tokenEndpoint = [NSURL URLWithString:@"https://login.microsoftonline.com/te/IanETB2CTenant.onmicrosoft.com/b2c_1_susi/oauth2/v2.0/token"];
     NSString *clientId = @"62386987-856b-4e6e-89db-59eef6d603b6";
     NSURL *redirectURI = [NSURL URLWithString:@"com.onmicrosoft.ianetb2ctenant.rnazureb2ctest2://oauth/redirect"];
 
@@ -29,20 +29,20 @@
     
     OIDAuthorizationRequest *request = [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
         clientId:clientId
-  //      scopes:@[@"openid", @"profile", @"offline_access"]
+//        scopes:@[@"openid", @"profile", @"offline_access"]
         scopes:@[@"openid", @"profile", @"offline_access", @"62386987-856b-4e6e-89db-59eef6d603b6"]
-  //      scopes:@[@"62386987-856b-4e6e-89db-59eef6d603b6"]
+//        scopes:@[@"62386987-856b-4e6e-89db-59eef6d603b6"]
+//        scopes:@[@"62386987-856b-4e6e-89db-59eef6d603b6", @	"offline_access"]
         redirectURL:redirectURI
         responseType:OIDResponseTypeCode
         additionalParameters:nil];
-    
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
+        
     UIViewController *viewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.currentAuthorizationFlow = [OIDAuthState authStateByPresentingAuthorizationRequest:request presentingViewController:viewController callback:^(OIDAuthState *authState, NSError *error)  {
         if (authState) {
-            // NSLog(@"Got authorization tokens. Access token: %@", authState.lastTokenResponse.accessToken);
+            NSLog(@"Got authorization tokens. Access token: %@", authState.lastTokenResponse);
             [self setAuthState:authState];
         } else {
             NSLog(@"Authorization error: %@", [error localizedDescription]);
