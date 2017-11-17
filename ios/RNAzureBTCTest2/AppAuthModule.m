@@ -3,7 +3,8 @@
 #import <OIDServiceConfiguration.h>
 #import <OIDAuthorizationRequest.h>
 #import "AppDelegate.h"
-#import <OIDTokenRequest.h>
+#import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
+#import <OIDTokenResponse.h>
 
 @implementation AppAuthModule
 
@@ -28,30 +29,51 @@
     OIDServiceConfiguration *configuration = [[OIDServiceConfiguration alloc] initWithAuthorizationEndpoint:authorizationEndpoint tokenEndpoint:tokenEndpoint];
     
     OIDAuthorizationRequest *request = [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
-        clientId:clientId
-        scopes:@[@"openid", @"profile", @"offline_access", @"62386987-856b-4e6e-89db-59eef6d603b6"]
-        redirectURL:redirectURI
-        responseType:OIDResponseTypeCode
-        additionalParameters:nil];
+      clientId:clientId
+      scopes:@[@"openid", @"profile", @"offline_access", @"62386987-856b-4e6e-89db-59eef6d603b6"]
+      redirectURL:redirectURI
+      responseType:OIDResponseTypeCode
+      additionalParameters:nil];
         
     UIViewController *viewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.currentAuthorizationFlow = [OIDAuthState authStateByPresentingAuthorizationRequest:request presentingViewController:viewController callback:^(OIDAuthState *authState, NSError *error)  {
-        if (authState) {
-            NSLog(@"Got authorization tokens. Access token: %@", authState.lastTokenResponse);
-            [self setAuthState:authState];
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Msg" message:@"Got access token" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
-            [alert addAction:defaultAction];
-            [viewController presentViewController:alert animated:YES completion:nil];
+      if (authState) {
+          OIDTokenResponse *resp = authState.lastTokenResponse;
+          NSString *token = resp.accessToken;
+          NSLog(@"Got authorization tokens. Access token: %@", token);
+          [self setAuthState:authState];
+        
+//          UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Msg" message:@"Got access token" preferredStyle:UIAlertControllerStyleAlert];
+//          UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+//          [alert addAction:defaultAction];
+//          [viewController presentViewController:alert animated:YES completion:nil];
+
+          MSClient *client = [MSClient clientWithApplicationURLString:@"https://api-app-test-1.azurewebsites.net"];
+          MSUser *user = [[MSUser alloc] initWithUserId:nil];
+          user.mobileServiceAuthenticationToken = token;
+          [client setCurrentUser:user];
+          [client invokeAPI:@"Test" body:nil HTTPMethod:@"GET" parameters:nil headers:nil completion:^(NSData *result, NSHTTPURLResponse *response, NSError *error) {
+            if (error) {
+              NSLog(@"ERROR %@", error);
+            } else {
+              NSDictionary *resultDictionary = (NSDictionary*)result;
+              NSDate *date = resultDictionary[@"date"];
+              NSLog(@"Success: %@", date.description);
+              UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Date" message:date.description preferredStyle:UIAlertControllerStyleAlert];
+              UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+              [alert addAction:defaultAction];
+              [viewController presentViewController:alert animated:YES completion:nil];
+            }
+          }];
         } else {
-            NSLog(@"Authorization error: %@", [error localizedDescription]);
-            [self setAuthState:nil];
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to get access token" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
-            [alert addAction:defaultAction];
-            [viewController presentViewController:alert animated:YES completion:nil];
+          NSLog(@"Authorization error: %@", [error localizedDescription]);
+          [self setAuthState:nil];
+          UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to get access token" preferredStyle:UIAlertControllerStyleAlert];
+          UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+          [alert addAction:defaultAction];
+          [viewController presentViewController:alert animated:YES completion:nil];
         }
     }];
 }

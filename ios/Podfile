@@ -9,5 +9,6 @@ target 'RNAzureBTCTest2' do
 
   # Pods for RNAzureBTCTest2
   pod 'AppAuth', '0.90.0'
-
+  pod 'MicrosoftAzureMobile', '~> 3.3.0'
+  
 end
