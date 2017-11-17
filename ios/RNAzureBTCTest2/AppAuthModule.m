@@ -44,9 +44,17 @@
         if (authState) {
             NSLog(@"Got authorization tokens. Access token: %@", authState.lastTokenResponse);
             [self setAuthState:authState];
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Msg" message:@"Got access token" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+            [alert addAction:defaultAction];
+            [viewController presentViewController:alert animated:YES completion:nil];
         } else {
             NSLog(@"Authorization error: %@", [error localizedDescription]);
             [self setAuthState:nil];
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to get access token" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+            [alert addAction:defaultAction];
+            [viewController presentViewController:alert animated:YES completion:nil];
         }
     }];
 }
