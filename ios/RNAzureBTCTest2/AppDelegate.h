@@ -8,9 +8,11 @@
  */
 
 #import <UIKit/UIKit.h>
+#import <OIDAuthorizationService.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong, nullable) UIWindow *window;
+@property (nonatomic, strong, nullable) id<OIDAuthorizationFlowSession> currentAuthorizationFlow;
 
 @end

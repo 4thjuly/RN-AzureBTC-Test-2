@@ -16,6 +16,17 @@
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.onmicrosoft.ianetb2ctenant.rnazureb2ctest2</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
@@ -41,7 +52,6 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSAppTransportSecurity</key>
-	<!--See http://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/ -->
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
@@ -52,9 +62,9 @@
 			</dict>
 		</dict>
 	</dict>
-  <key>NSCameraUsageDescription</key>
-  <string> For QRCode scanning</string>
-  <key>NSPhotoLibraryUsageDescription</key>
-  <string>Fsor QRCode scanning</string>
+	<key>NSCameraUsageDescription</key>
+	<string> For QRCode scanning</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Fsor QRCode scanning</string>
 </dict>
 </plist>
