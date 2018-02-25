@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Platform } from 'react-native';
 import AppAuthAndroid from './AppAuthAndroid';
 
 export default class MainScreen extends React.Component {
@@ -25,6 +25,25 @@ export default class MainScreen extends React.Component {
       </View>
     );
   }
+
+  login() {
+    if (Platform.OS === 'ios') {
+      // AppAuthIos.test('This is a test');
+      AppAuthIos.login();
+    } else {
+      AppAuthAndroid.login();
+    }
+
+  }
+
+  logout() {
+    if (Platform.OS === 'ios') {
+      AppAuthIos.test('This is a test');
+    } else {
+      AppAuthAndroid.logout();
+    }
+  }
+
 }
 
 const styles = StyleSheet.create({
