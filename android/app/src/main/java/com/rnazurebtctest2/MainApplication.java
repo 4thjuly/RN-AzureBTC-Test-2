@@ -3,6 +3,11 @@ package com.rnazurebtctest2;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import fr.bamlab.rnimageresizer.ImageResizerPackage;
+import com.imagepicker.ImagePickerPackage;
+import com.lwansbrough.RCTCamera.RCTCameraPackage;
+import com.imagepicker.ImagePickerPackage;
+import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -30,7 +35,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RCTCameraPackage(), new AppAuthPackage()
+          new ImageResizerPackage(),
+          new ImagePickerPackage(),
+          new RCTCameraPackage(),
+          new AppAuthPackage()
       );
     }
   };
@@ -45,7 +53,7 @@ public class MainApplication extends Application implements ReactApplication {
   public AuthorizationServiceConfiguration getAuthConfig() { return authConfig; }
   public void setAuthConfig(AuthorizationServiceConfiguration authConfig) { this.authConfig = authConfig; }
 
-    @Override
+  @Override
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, false);
