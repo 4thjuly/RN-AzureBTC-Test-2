@@ -2,10 +2,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
-// import ImageResizer from 'react-native-image-resizer';
+import ImageResizer from 'react-native-image-resizer';
+
+const RESIZE_WIDTH = 480;
+const RESIZE_HEIGHT = 640;
+const RESIZE_QUALITY = 100;
 
 export default class ResizeImageScreen extends React.Component {
     static navigationOptions = { title: 'Image Resize' };
+    uri = null;
     state = { imageSrc: null, width: 0, height:0 }
 
     render() {
@@ -31,7 +36,13 @@ export default class ResizeImageScreen extends React.Component {
     }
 
     resize = () => {
-
+        ImageResizer.createResizedImage(this.uri, RESIZE_WIDTH, RESIZE_HEIGHT, 'PNG', RESIZE_QUALITY).then((response) => {
+            let imageSrc = {uri: response.uri};
+            this.setState({imageSrc: imageSrc, width: RESIZE_WIDTH, height: RESIZE_HEIGHT});
+            console.log('resize uri: ', response.uri);
+          }).catch((err) => {
+            console.log('ERROR resize: ', err);
+          });
     }
 
     load = () => {
@@ -47,6 +58,7 @@ export default class ResizeImageScreen extends React.Component {
             } else if (response.customButton) {
                 console.log('User tapped custom button: ', response.customButton);
             } else {
+                this.uri = response.uri;
                 let imageSrc = { uri: 'data:image/jpeg;base64,' + response.data };
                 this.setState({imageSrc: imageSrc, width: response.width, height: response.height});
             }
