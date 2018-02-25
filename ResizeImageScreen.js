@@ -2,6 +2,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
+import ImageResizer from 'react-native-image-resizer';
 
 export default class ResizeImageScreen extends React.Component {
     static navigationOptions = { title: 'Image Resize' };
@@ -14,14 +15,19 @@ export default class ResizeImageScreen extends React.Component {
               <Button style={{margin:5}} title=" Load " onPress={this.load} />    
               <Button style={{margin:5}} title=" Resize " onPress={this.resize} />
             </View>
-            <View style={styles.middle} >
-              <Image style={{width:this.state.width, height:this.state.height}} source={this.state.imageSrc}/>
+            <View style={styles.middle} onLayout={this.onLayout} >
+              <Image style={{width:this.state.width, height:this.state.height, resizeMode:'stretch'}} source={this.state.imageSrc}/>
             </View>
             <View style={styles.bottom} >
               <Text>Status</Text>
             </View>
           </View>
         );
+    }
+
+    onLayout = (event) => {
+        console.log('onLayout');
+        let { width, height } = event.nativeEvent.layout;
     }
 
     resize = () => {
