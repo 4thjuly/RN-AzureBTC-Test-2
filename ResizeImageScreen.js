@@ -2,7 +2,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
-import ImageResizer from 'react-native-image-resizer';
+// import ImageResizer from 'react-native-image-resizer';
 
 export default class ResizeImageScreen extends React.Component {
     static navigationOptions = { title: 'Image Resize' };
