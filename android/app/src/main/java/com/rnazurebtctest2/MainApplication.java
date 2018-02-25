@@ -49,7 +49,7 @@ public class MainApplication extends Application implements ReactApplication {
   public AuthorizationServiceConfiguration getAuthConfig() { return authConfig; }
   public void setAuthConfig(AuthorizationServiceConfiguration authConfig) { this.authConfig = authConfig; }
 
-    @Override
+  @Override
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, false);
