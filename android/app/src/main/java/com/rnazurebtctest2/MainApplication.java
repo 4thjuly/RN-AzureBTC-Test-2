@@ -3,6 +3,8 @@ package com.rnazurebtctest2;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.imagepicker.ImagePickerPackage;
+import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -30,7 +32,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RCTCameraPackage(), new AppAuthPackage()
+          new ImagePickerPackage(),
+          new RCTCameraPackage(),
+          new AppAuthPackage()
       );
     }
   };

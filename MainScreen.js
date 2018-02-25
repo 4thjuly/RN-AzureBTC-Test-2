@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import AppAuthAndroid from './AppAuthAndroid';
-import QRCode from 'react-native-qrcode';
 
 export default class MainScreen extends React.Component {
   static navigationOptions = { title: 'Main' };
@@ -10,14 +9,19 @@ export default class MainScreen extends React.Component {
     const { navigate } = this.props.navigation;    
     return (
       <View style={styles.container}>
-        <Text style={{margin:5}}>Sample app with native module - v0.04</Text>
-        <View style={{flexDirection:'row', margin:5}}>
-          <Button style={{margin:5}} title=" Logon " onPress={ () => { AppAuthAndroid.login() }} /> 
-          <Button style={{margin:5}} title=" Logoff " onPress={ () => { AppAuthAndroid.logout() }} />
-          <Button style={{margin:5}} title=" QR " onPress={ () => { navigate('QR')}} />
-          <Button style={{margin:5}} title=" Scan " onPress={ () => { navigate('Scan')}} />
+        <View style={styles.top} >
+          <Button style={{margin:5}} title=" Logon " onPress={() => { AppAuthAndroid.login() }} />    
+          <Button style={{margin:5}} title=" Logoff " onPress={() => { AppAuthAndroid.logout() }} />
+          <Button style={{margin:5}} title=" QR " onPress={() => { navigate('QR') }} />
+          <Button style={{margin:5}} title=" Scan " onPress={() => { navigate('Scan') }} />
+          <Button style={{margin:5}} title=" Image " onPress={() => { navigate('ResizeImage') }} />        
         </View>
-        {/* <QRCode value='This is a test' size={200} bgColor='darkblue' fgColor='lightblue'/> */}
+        <View style={styles.middle} >
+          <Text></Text>
+        </View>
+        <View style={styles.bottom} >
+          <Text>Status</Text>
+        </View>
       </View>
     );
   }
@@ -26,8 +30,21 @@ export default class MainScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
   },
+  top: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    padding: 5,
+    backgroundColor: '#C0D0E0'
+  },
+  middle: {
+    flex:1,
+  },
+  bottom: {
+    backgroundColor: '#C0D0E0',
+    height:20,
+    paddingHorizontal: 5
+  }
 });

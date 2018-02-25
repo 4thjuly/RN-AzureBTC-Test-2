@@ -19,7 +19,7 @@ android {
         versionCode 1
         versionName "1.0"
         ndk { abiFilters "armeabi-v7a", "x86" }
-        manifestPlaceholders = ['appAuthRedirectScheme': 'com.onmicrosoft.ianetb2ctenant.rnazureb2ctest2']
+        manifestPlaceholders = ['appAuthRedirectScheme': 'com.onmicrosoft.sidecard']
     }
     splits {
         abi {
@@ -71,6 +71,7 @@ dependencies {
     }
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile project(':react-native-camera')
+    compile project(':react-native-image-picker')
 
 //    compile 'net.openid:appauth:0.7.0'
 //    compile('net.openid:appauth:0.7.0') {
