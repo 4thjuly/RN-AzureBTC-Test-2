@@ -73,17 +73,6 @@ dependencies {
     compile project(':react-native-camera')
     compile project(':react-native-image-picker')
     compile project(':react-native-image-resizer')
-
-//    compile 'net.openid:appauth:0.7.0'
-//    compile('net.openid:appauth:0.7.0') {
-//        exclude module: 'support-annotations'
-//        exclude module: 'support-customtabs'
-//    }
-
-//    compile 'com.android.support:appcompat-v7:23.0.1'
-//    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-//    compile 'com.google.guava:guava:23.0-android'
-//    compile 'com.google.code.gson:gson:2.8.1'
 }
 
 // Run this once to be able to run the application with BUCK

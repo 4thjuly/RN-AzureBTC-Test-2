@@ -4,14 +4,16 @@ import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
 import ImageResizer from 'react-native-image-resizer';
 
-const RESIZE_WIDTH = 480;
-const RESIZE_HEIGHT = 640;
+const RESIZE_WIDTH = 240;
+const RESIZE_HEIGHT = 320;
 const RESIZE_QUALITY = 100;
 
 export default class ResizeImageScreen extends React.Component {
     static navigationOptions = { title: 'Image Resize' };
     uri = null;
-    state = { imageSrc: null, width: 0, height:0 }
+    state = { imageSrc: null, imageViewWidth: 0, imageViewHeight:0, }
+    containerWidth = 0;
+    containerHeight = 0;
 
     render() {
         return (
@@ -19,9 +21,10 @@ export default class ResizeImageScreen extends React.Component {
             <View style={styles.top} >
               <Button style={{margin:5}} title=" Load " onPress={this.load} />    
               <Button style={{margin:5}} title=" Resize " onPress={this.resize} />
+              <Button style={{margin:5}} title=" Fill " onPress={this.fill} />
             </View>
             <View style={styles.middle} onLayout={this.onLayout} >
-              <Image style={{width:this.state.width, height:this.state.height, resizeMode:'stretch'}} source={this.state.imageSrc}/>
+              <Image style={{width:this.state.imageViewWidth, height:this.state.imageViewHeight, resizeMode:'stretch'}} source={this.state.imageSrc}/>
             </View>
             <View style={styles.bottom} >
               <Text>Status</Text>
@@ -30,15 +33,21 @@ export default class ResizeImageScreen extends React.Component {
         );
     }
 
+    fill = () => {
+        this.setState({imageViewWidth: this.containerWidth, imageViewHeight: this.containerHeight});
+    }
+
     onLayout = (event) => {
         console.log('onLayout');
         let { width, height } = event.nativeEvent.layout;
+        this.containerWidth = width;
+        this.containerHeight = height;
     }
 
     resize = () => {
         ImageResizer.createResizedImage(this.uri, RESIZE_WIDTH, RESIZE_HEIGHT, 'PNG', RESIZE_QUALITY).then((response) => {
             let imageSrc = {uri: response.uri};
-            this.setState({imageSrc: imageSrc, width: RESIZE_WIDTH, height: RESIZE_HEIGHT});
+            this.setState({imageSrc: imageSrc, imageViewWidth: RESIZE_WIDTH, imageViewHeight: RESIZE_HEIGHT});
             console.log('resize uri: ', response.uri);
           }).catch((err) => {
             console.log('ERROR resize: ', err);
@@ -60,7 +69,7 @@ export default class ResizeImageScreen extends React.Component {
             } else {
                 this.uri = response.uri;
                 let imageSrc = { uri: 'data:image/jpeg;base64,' + response.data };
-                this.setState({imageSrc: imageSrc, width: response.width, height: response.height});
+                this.setState({imageSrc: imageSrc, imageViewWidth: response.width, imageViewHeight: response.height});
             }
         });
     }
