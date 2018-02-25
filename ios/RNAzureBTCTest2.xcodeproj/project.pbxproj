@@ -304,7 +304,6 @@
 		04467804F27947BB83933551 /* libRNImagePicker.a */ = {isa = PBXFileReference; name = "libRNImagePicker.a"; path = "libRNImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		B9D1D05DADE147BCA10F7C2C /* RCTImageResizer.xcodeproj */ = {isa = PBXFileReference; name = "RCTImageResizer.xcodeproj"; path = "../node_modules/react-native-image-resizer/ios/RCTImageResizer.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		A38AB3EB074C422BA0A39EBD /* libRCTImageResizer.a */ = {isa = PBXFileReference; name = "libRCTImageResizer.a"; path = "libRCTImageResizer.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		FA4B5DEA3E1839494607B462 /* Pods-RNAzureBTCTest2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNAzureBTCTest2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RNAzureBTCTest2/Pods-RNAzureBTCTest2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,7 +333,6 @@
 				C68242B6D1BF479CB27F2ED8 /* libRCTCamera.a in Frameworks */,
 				8D49AFB166124524B3BF094E /* libRNImagePicker.a in Frameworks */,
 				E062F1D35B5F476EBF8F9456 /* libRCTImageResizer.a in Frameworks */,
-				408BF3C1F2A96FFB9DC592C2 /* libPods-RNAzureBTCTest2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Platform } from 'react-native';
 import AppAuthAndroid from './AppAuthAndroid';
-import AppAuthIos from './AppAuthIos';
-import QRCode from 'react-native-qrcode';
 
 export default class MainScreen extends React.Component {
   static navigationOptions = { title: 'Main' };
